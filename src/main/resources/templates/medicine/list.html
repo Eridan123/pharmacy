@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine List</title>
+</head>
+<body>
+
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Amount</th>
+    </tr>
+    <tr th:each="medicine:${medicines}">
+        <td th:text="${medicine.name}"></td>
+        <td th:text="${medicine.description}"></td>
+        <td th:text="${medicine.amount}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
