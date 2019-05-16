@@ -16,8 +16,8 @@ public class Order {
     @JoinColumn(name="from_user_id")
     private User user;
 
-    @OneToMany(mappedBy = "order")
-    private Set<Medicine> medicines;
+//    @OneToMany(mappedBy = "order")
+//    private Set<Medicine> medicines;
 
     private Date date;
 
@@ -55,13 +55,13 @@ public class Order {
         this.user = user;
     }
 
-    public Set<Medicine> getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(Set<Medicine> medicines) {
-        this.medicines = medicines;
-    }
+//    public Set<Medicine> getMedicines() {
+//        return medicines;
+//    }
+//
+//    public void setMedicines(Set<Medicine> medicines) {
+//        this.medicines = medicines;
+//    }
 
     public Date getDate() {
         return date;
