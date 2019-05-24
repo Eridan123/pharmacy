@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine For List</title>
+</head>
+<body>
+
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="m:${list}">
+        <td th:text="${m.name}"></td>
+        <td th:text="${m.description}"></td>
+        <td><a th:href="@{/medicineFor/__${m.id}__/save}">Edit</a></td>
+        <td><form th:action="@{/medicineFor/__${m.id}__/delete}" method="post"><button type="submit">Delete</button></form></td>
+    </tr>
+</table>
+
+</body>
+</html>

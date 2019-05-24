@@ -77,11 +77,10 @@ public class MedicineController {
             Medicine medicine1=medicineRepository.getOne(medicine.getId());
             medicine1.setName(medicine.getName());
             medicine1.setDescription(medicine.getDescription());
-            medicine1.setAmount(medicine.getAmount());
             medicineRepository.save(medicine1);
         }
 
-        return "redirect :medicine/"+medicine.getId()+"/view";
+        return "redirect :/medicine/"+medicine.getId()+"/view";
 
     }
 

@@ -7,11 +7,11 @@ import javax.persistence.*;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="order_id")
+    @OneToOne
+    @MapsId
     private Order order;
 
     private Double total;

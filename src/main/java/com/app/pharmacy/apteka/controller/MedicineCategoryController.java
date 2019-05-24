@@ -55,7 +55,7 @@ public class MedicineCategoryController {
     }
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String savePostView(ModelMap model,MedicineCategory category){
+    public String savePostView(MedicineCategory category){
 
         if(category.getId()==null){
             medicineCategoryRepository.save(category);
@@ -67,7 +67,7 @@ public class MedicineCategoryController {
             medicineCategoryRepository.save(category1);
         }
 
-        return "category/list";
+        return "redirect:/category/list";
 
     }
 }

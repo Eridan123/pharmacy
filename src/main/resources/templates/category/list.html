@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Medicine Category List</title>
@@ -10,10 +10,17 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th sec:authorize="hasRole('ADMIN')">Edit</th>
+        <th sec:authorize="hasRole('ADMIN')">Delete</th>
     </tr>
     <tr th:each="category:${categories}">
         <td th:text="${category.name}"></td>
         <td th:text="${category.description}"></td>
+        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/category/__${category.id}__/save}">Edit</a></td>
+        <td sec:authorize="hasRole('ADMIN')"><form th:action="@{/category/__${category.id}__/delete}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
 </table>
 

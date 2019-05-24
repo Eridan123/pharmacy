@@ -2,13 +2,15 @@ package com.app.pharmacy.apteka.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "medicine")
 public class Medicine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -20,8 +22,6 @@ public class Medicine {
     private Date expire_date;
 
     private String license;
-
-    private int amount;
 
     private int cost;
 
@@ -36,6 +36,11 @@ public class Medicine {
     @ManyToOne
     @JoinColumn(name="medicine_for_id", nullable=true)
     private MedicineFor medicine_for;
+
+
+    @OneToMany(mappedBy="medicine")
+    private Set<MedicineAmount> medicineAmounts;
+
 
     public Long getId() {
         return id;
@@ -85,14 +90,6 @@ public class Medicine {
         this.license = license;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public int getCost() {
         return cost;
     }
@@ -123,5 +120,13 @@ public class Medicine {
 
     public void setMedicine_for(MedicineFor medicine_for) {
         this.medicine_for = medicine_for;
+    }
+
+    public Set<MedicineAmount> getMedicineAmounts() {
+        return medicineAmounts;
+    }
+
+    public void setMedicineAmounts(Set<MedicineAmount> medicineAmounts) {
+        this.medicineAmounts = medicineAmounts;
     }
 }

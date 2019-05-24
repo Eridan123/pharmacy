@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine For Add/Edit</title>
+</head>
+<body>
+<form th:action="@{/medicineFor/save}" th:object="${model}" method="post">
+    <input hidden="hidden" type="text" name="id" th:field="*{id}"><br>
+    Name:<br>
+    <input type="text" th:field="*{name}"><br>
+    Description:<br>
+    <input type="text" th:field="*{description}"><br>
+    <button type="submit" >SUBMIT</button>
+</form>
+</body>
+</html>

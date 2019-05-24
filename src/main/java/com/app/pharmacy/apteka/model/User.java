@@ -1,13 +1,14 @@
 package com.app.pharmacy.apteka.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
@@ -15,6 +16,9 @@ public class User {
     private String encryted_password;
 
     private boolean enabled;
+
+    @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+    private Set<Order> orders;
 
     public Long getId() {
         return id;
@@ -47,4 +51,12 @@ public class User {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+//    public Set<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Set<Order> orders) {
+//        this.orders = orders;
+//    }
 }

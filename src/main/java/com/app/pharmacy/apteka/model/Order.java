@@ -2,29 +2,30 @@ package com.app.pharmacy.apteka.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity=User.class, fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JoinColumn(name="from_user_id")
     private User user;
 
-//    @OneToMany(mappedBy = "order")
-//    private Set<Medicine> medicines;
+    @OneToMany(mappedBy="order")
+    private Set<MedicineAmount> medicineAmounts;
 
     private Date date;
 
     private String phone_number;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="address_id")
     private Address address;
 
     @Column(columnDefinition = "varchar(20) default 'NORMAL'")
@@ -35,9 +36,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus delivery_status = DeliveryStatus.WAITING;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="payment_id")
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
+
 
     public Long getId() {
         return id;
@@ -55,13 +56,13 @@ public class Order {
         this.user = user;
     }
 
-//    public Set<Medicine> getMedicines() {
-//        return medicines;
-//    }
-//
-//    public void setMedicines(Set<Medicine> medicines) {
-//        this.medicines = medicines;
-//    }
+    public Set<MedicineAmount> getMedicineAmounts() {
+        return medicineAmounts;
+    }
+
+    public void setMedicineAmounts(Set<MedicineAmount> medicineAmounts) {
+        this.medicineAmounts = medicineAmounts;
+    }
 
     public Date getDate() {
         return date;
