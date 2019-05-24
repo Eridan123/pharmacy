@@ -2,8 +2,7 @@ package com.app.pharmacy.apteka.controller;
 
 import com.app.pharmacy.apteka.model.Role;
 import com.app.pharmacy.apteka.model.UserRole;
-import com.app.pharmacy.apteka.repository.RoleRepository;
-import com.app.pharmacy.apteka.repository.UserRepository;
+import com.app.pharmacy.apteka.repository.*;
 import com.app.pharmacy.apteka.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,10 +28,20 @@ public class MainController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    MedicineRepository medicineRepository;
+
+    @Autowired
+    MedicineCategoryRepository medicineCategoryRepository;
+
+    @Autowired
+    MedicineForRepository medicineForRepository;
+
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
+        model.addAttribute("list", medicineRepository.findAll());
+        model.addAttribute("categories",medicineCategoryRepository.findAll());
+        model.addAttribute("fors",medicineForRepository.findAll());
         return "home";
     }
 
@@ -50,7 +59,7 @@ public class MainController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
 
-        return "loginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)

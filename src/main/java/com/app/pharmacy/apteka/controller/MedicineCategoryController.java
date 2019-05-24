@@ -1,9 +1,13 @@
 package com.app.pharmacy.apteka.controller;
 
+import com.app.pharmacy.apteka.model.Medicine;
 import com.app.pharmacy.apteka.model.MedicineCategory;
 import com.app.pharmacy.apteka.repository.MedicineCategoryRepository;
+import com.app.pharmacy.apteka.repository.MedicineForRepository;
+import com.app.pharmacy.apteka.repository.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +21,12 @@ public class MedicineCategoryController {
 
     @Autowired
     MedicineCategoryRepository medicineCategoryRepository;
+
+    @Autowired
+    MedicineRepository medicineRepository;
+
+    @Autowired
+    MedicineForRepository medicineForRepository;
 
     @RequestMapping(value = {"","/list"})
     public String listMedicine(ModelMap model){
@@ -68,6 +78,20 @@ public class MedicineCategoryController {
         }
 
         return "redirect:/category/list";
+
+    }
+
+    @RequestMapping(value = {"/{id}/medicines"}, method = RequestMethod.GET)
+    public String medicines(Model model, @PathVariable("id") Long id){
+
+        MedicineCategory category=medicineCategoryRepository.getOne(id);
+        List<Medicine> list=medicineRepository.findMedicinesByMedicineCategory(category);
+
+        model.addAttribute("list",list);
+        model.addAttribute("categories",medicineCategoryRepository.findAll());
+        model.addAttribute("fors",medicineForRepository.findAll());
+
+        return "home";
 
     }
 }

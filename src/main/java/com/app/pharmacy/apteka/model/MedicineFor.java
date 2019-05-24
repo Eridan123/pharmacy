@@ -15,7 +15,7 @@ public class MedicineFor {
 
     private String description;
 
-    @OneToMany(mappedBy="medicine_for")
+    @OneToMany(mappedBy="medicineFor")
     private Set<Medicine> medicines;
 
     public Long getId() {

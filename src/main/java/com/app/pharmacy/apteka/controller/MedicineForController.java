@@ -2,13 +2,18 @@ package com.app.pharmacy.apteka.controller;
 
 import com.app.pharmacy.apteka.model.Medicine;
 import com.app.pharmacy.apteka.model.MedicineFor;
+import com.app.pharmacy.apteka.repository.MedicineCategoryRepository;
 import com.app.pharmacy.apteka.repository.MedicineForRepository;
+import com.app.pharmacy.apteka.repository.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/medicineFor")
@@ -16,6 +21,12 @@ public class MedicineForController {
 
     @Autowired
     MedicineForRepository medicineForRepository;
+
+    @Autowired
+    MedicineCategoryRepository medicineCategoryRepository;
+
+    @Autowired
+    MedicineRepository medicineRepository;
 
 
     @RequestMapping("/list")
@@ -54,5 +65,19 @@ public class MedicineForController {
         medicineForRepository.delete(medicineFor);
 
         return "redirect:/medicineFor/list";
+    }
+
+    @RequestMapping("/{id}/medicines")
+    public String medicines(Model model, @PathVariable("id") Long id){
+
+        MedicineFor medicineFor=medicineForRepository.getOne(id);
+        List<Medicine> list=medicineRepository.findMedicinesByMedicineFor(medicineFor);
+
+        model.addAttribute("list",list);
+        model.addAttribute("categories",medicineCategoryRepository.findAll());
+        model.addAttribute("fors",medicineForRepository.findAll());
+
+        return "home";
+
     }
 }

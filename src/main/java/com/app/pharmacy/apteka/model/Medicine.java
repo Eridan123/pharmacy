@@ -31,11 +31,11 @@ public class Medicine {
 
     @ManyToOne
     @JoinColumn(name="medicine_category_id", nullable=false)
-    private MedicineCategory medicine_category;
+    private MedicineCategory medicineCategory;
 
     @ManyToOne
     @JoinColumn(name="medicine_for_id", nullable=true)
-    private MedicineFor medicine_for;
+    private MedicineFor medicineFor;
 
 
     @OneToMany(mappedBy="medicine")
@@ -106,20 +106,20 @@ public class Medicine {
         this.quantity_type = quantity_type;
     }
 
-    public MedicineCategory getMedicine_category() {
-        return medicine_category;
+    public MedicineCategory getMedicineCategory() {
+        return medicineCategory;
     }
 
-    public void setMedicine_category(MedicineCategory medicine_category) {
-        this.medicine_category = medicine_category;
+    public void setMedicineCategory(MedicineCategory medicineCategory) {
+        this.medicineCategory = medicineCategory;
     }
 
-    public MedicineFor getMedicine_for() {
-        return medicine_for;
+    public MedicineFor getMedicineFor() {
+        return medicineFor;
     }
 
-    public void setMedicine_for(MedicineFor medicine_for) {
-        this.medicine_for = medicine_for;
+    public void setMedicineFor(MedicineFor medicineFor) {
+        this.medicineFor = medicineFor;
     }
 
     public Set<MedicineAmount> getMedicineAmounts() {

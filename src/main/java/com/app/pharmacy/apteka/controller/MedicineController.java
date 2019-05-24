@@ -70,7 +70,7 @@ public class MedicineController {
     public String savePostView(ModelMap model,Medicine medicine){
 
         if(medicine.getId()==null){
-            medicine.setMedicine_category(medicineCategoryRepository.getOne(Long.valueOf(1)));
+            medicine.setMedicineCategory(medicineCategoryRepository.getOne(Long.valueOf(1)));
             medicineRepository.save(medicine);
         }
         else {
