@@ -33,7 +33,7 @@ public class MainController {
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
-        return "welcomePage";
+        return "home";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

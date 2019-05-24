@@ -1,0 +1,744 @@
+<!--Template Name: Medistore
+File Name: home.html
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<title>MediStore</title>
+<div th:replace="fragment/header :: header-css"/>
+    <body>
+    <!--begin header-->
+    <div th:replace="layout/header"/>
+    <!--end header-->
+    <div class="container" >
+            <div class="row" id="search_manu" style="margin-top: 10px">
+                <div class="col-md-6 col-xs-12">
+                    <form  name="quick_find">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" placeholder="Enter search keywords here" class="form-control input-lg" id="inputGroup"/>
+                                <span class="input-group-addon">
+                                    <a href="#" style="color:white">Search</a>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-xs-12">
+
+                    <form  name="manufacturers"> 
+                        <div class="form-group">
+                            <div class="">
+                                <select  style="font-size: 14px; background: #EAEAEA; border: none;" name="manufacturers_id"  size="1" class="input-lg form-control arrow-hide date_class">
+                                    <option value="" selected="selected">Please Select manufacturers</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="site_content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 left_sidebar1">
+                        <div id="left_part">
+                            <div class="bs-example">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="infoBoxHeading">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Categories</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                    <i  id="accordan_plus" class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="infoBoxContents">
+                                                    <a href="product.html">Medicinal Agents</a>&nbsp;(10)<br />
+                                                    <a href="product.html">Medical Products</a>&nbsp;(9)<br />
+                                                    <a href="product.html">Vitamins</a>&nbsp;(5)<br />
+                                                    <a href="product.html">Medicinal herbs</a>&nbsp;(6)<br />
+                                                    <a href="product.html">For the children</a>&nbsp;(7)<br />
+                                                    <a href="product.html">Other</a>&nbsp;(8)<br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="infoBoxHeading">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">What's New?</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right accordan_plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="infoBoxContainer">  
+                                                    <div class="infoBoxHeading">
+                                                        <a href="#">What's New?</a>
+                                                    </div> 
+                                                    <div class="infoBoxContents" id="sidebar">
+                                                        <div>
+                                                            <a href="single-product.html">
+                                                                <img src="images/img4.jpg" class="img-responsive" />
+                                                            </a>
+                                                        </div>
+                                                        <a href="single-product.html">Aciclovir</a><br />50.00 KGS
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="infoBoxHeading">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Specials</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div id="collapseFive" class="panel-collapse collapse">
+                                            <div class="panel-body">
+
+                                                <div class="infoBoxContents" id="sidebar">
+
+                                                    <a href="single-product.html">
+                                                        <img src="images/img6.jpg"  class="img-responsive" />
+                                                    </a>
+                                                    <a href="single-product.html">Vardenafil</a><br /><del></del>
+                                                    <span class="productSpecialPrice">99.00 KGS</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <script>
+                            function toggleChevron(e) {
+                                $(e.target)
+                                        .prev('.panel-heading')
+                                        .find("i.indicator")
+                                        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+                            }
+                            $('#accordion').on('hidden.bs.collapse', toggleChevron);
+                            $('#accordion').on('shown.bs.collapse', toggleChevron);
+                        </script>
+
+                    </div> 
+                    <div class="col-md-9 col-sm-8 col-xs-12 right_sidebar1">
+                        <div id="right_part">
+                            <div class="contentContainer">
+                                <div class="contentText">
+                                    <div class="breadcrumbs">
+                                        <a href="home.html" class="headerNavigation"><i class="fa fa-home"></i></a>			
+                                    </div>
+                                </div>
+
+                                <!----slidder start-!-->
+                                <div class="contentText">
+                                    <div class="infoBoxHeading">Today Bestsellers</div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12"  >
+                                            <!--                                        <div class="bg_best">-->
+                                            <div class="bg_best">
+                                                <div class="owl-carousel">
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/d1.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img4.jpg">
+                                                            </a>
+                                                        </span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img6.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img13.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img14.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img16.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img15.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <!--                                                    <div class="item">
+                                                                                                            <span>
+                                                                                                                <a href="single-product.html">
+                                                                                                                    <img class="carasoul_image" src="images/d25.jpg">
+                                                                                                                </a></span>
+                                                                                                            <a class="btn btn-default"  href="cart.html" role="button" >
+                                                                                                                Buy Now!
+                                                                                                            </a>
+                                                                                                        </div>-->
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/img1.png">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/d2.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span>
+                                                            <a href="single-product.html">
+                                                                <img class="carasoul_image" src="images/d7.jpg">
+                                                            </a></span>
+                                                        <a class="btn btn-default"  href="cart.html" role="button" >
+                                                            Buy Now!
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $('.owl-carousel').owlCarousel({
+                                                            loop: true,
+                                                            margin: 10,
+                                                            responsiveClass: true,
+                                                            responsive: {
+                                                                0: {
+                                                                    items: 2,
+                                                                    nav: true
+                                                                },
+                                                                600: {
+                                                                    items: 3,
+                                                                    nav: false
+                                                                },
+                                                                1000: {
+                                                                    items: 5,
+                                                                    nav: true,
+                                                                    loop: false,
+                                                                    margin: 20
+                                                                }
+
+                                                            }
+                                                        })
+                                                    })
+                                                </script>
+                                            </div>
+                                            <!--                                    </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!----slidder End-!-->
+                                <!----content_1--!-->
+                                <div class="contentText Static">
+                                    <h1>Why Medi Store</h1>
+                                    <p>Simple Online Pharmacy also offers a number of additional services alongside NHS prescriptions. You can shop for everyday pharmacy items or send us existing private prescriptions you have.  </p>
+                                    <p>We can also assess to see if you're suitable for a limited range of prescription medications via our online doctor service.</p>
+                                </div>
+                                <!----content_1 End--!-->
+
+
+                                <!----content_2 For New Products--!-->
+                                <div class="contentText">
+                                    <h1>Products</h1>
+                                    <div class="row margin-top product-layout_width">
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Ciprofloxacin</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d1.jpg" class="img-responsive" width="200" height="200" />
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">134.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Ciprofloxacin is a second generation fluoroquinolone that has spawned many derivative antibiotics.
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Aciclovir Tablets</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/img4.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">50.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Tablets are indicated for the treatment of herpes simplex virus infections of the skin.
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Circadin</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/img6.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">259.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Circadin®, is an innovative sleep medication, first in a new class of drugs: melatonin receptor agonists.
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Graviola</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/img13.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">260.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Graviola (Annona muricata) is a small deciduous tropical evergreen fruit tree
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Imigran</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/img14.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">1200.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Imigran is indicated for the acute intermittent treatment of migraine.
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Orlistat</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/img15.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">199.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+                                                        <li class="li_product_desc">
+                                                            <div class="caption">
+                                                                <p>
+                                                                    Orlistat is a drug used in the treatment of obesity.
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!----content_2 End--!-->
+
+                                <!----content_3--!-->
+                                <div class="contentText">
+                                    <h1>Specials</h1>
+                                    <div class="row margin-top product-layout_width">
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Aroma Therapy</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d17.jpg" class="img-responsive" width="200" height="200"/>
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">134.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Herbal</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d21.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">210.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Pills Drug</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d23.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">235.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div> 
+
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Capsule Pill</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d2.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">137.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">Medication Cure</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d7.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">212.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-thumb-height">
+                                                <div class="product-thumb transition">
+                                                    <ul>
+                                                        <li class="li_product_title">
+                                                            <div class="product_title">
+                                                                <a href="single-product.html">China GuangDong Seeds</a>
+                                                            </div></li>
+                                                        <li class="li_product_image">
+                                                            <div class="image">
+                                                                <a href="single-product.html">
+                                                                    <img src="images/d15.jpg"  class="img-responsive" width="200" height="200" />		
+                                                                </a>
+
+                                                            </div>
+                                                        </li>
+                                                        <li class="li_product_price">
+                                                            <span class="old_price1"></span>
+                                                            <span class="new_price1">129.00 KGS</span>
+                                                            <span class="saving1"></span><li>
+
+                                                        <li class="li_product_buy_button">
+                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
+                                                                Buy Now!
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!----content_3 End--!-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--begin footer-->
+        <div th:replace="layout/footer"/>
+        <!--end footer-->
+    </body>
+</html> 
