@@ -33,7 +33,7 @@ public class MedicineForController {
     public String list(ModelMap model){
         model.addAttribute("list",medicineForRepository.findAll());
 
-        return "/medicinefor/list";
+        return "medicinefor/list";
     }
 
     @RequestMapping("/{id}/save")
