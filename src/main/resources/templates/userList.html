@@ -3,26 +3,17 @@
 <div th:replace="fragment/header :: header-css"/>
 <body>
 <div th:replace="layout/header"/>
-
-
 <div class="row">
     <div class="col-md-9">
-        <h1> My orders</h1>
-    </div>
-    <div class="col-md-3">
-        <a type="button" th:href="@{/medicine/0/save}" class="btn btn-default">Add medicine</a>
+        <h1> User List</h1>
     </div>
 </div>
 <table style="width:100%" class="table-bordered table-striped form-horizontal">
     <tr >
-        <th>Date</th>
-        <th>Address</th>
-        <th>Total</th>
+        <th>Username</th>
     </tr>
-    <tr th:each="order:${orders}">
-        <td th:text="${order.date}"></td>
-        <td th:text="${order.address.name}+${order.address.town.name}"></td>
-        <td th:text="${${order.payment.total}}"></td>
+    <tr th:each="user:${users}">
+        <td th:text="${user.username}"></td>
     </tr>
 </table>
 

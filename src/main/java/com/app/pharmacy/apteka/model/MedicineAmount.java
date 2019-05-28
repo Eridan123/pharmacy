@@ -24,9 +24,6 @@ public class MedicineAmount {
     @Column(nullable=true)
     private Date expire_date;
 
-    @ManyToOne
-    @JoinColumn(name="arrival_id", nullable=true)
-    private Arrival arrival;
 
     @ManyToOne
     @JoinColumn(name="order_id", nullable=true)
@@ -62,14 +59,6 @@ public class MedicineAmount {
 
     public void setExpire_date(Date expire_date) {
         this.expire_date = expire_date;
-    }
-
-    public Arrival getArrival() {
-        return arrival;
-    }
-
-    public void setArrival(Arrival arrival) {
-        this.arrival = arrival;
     }
 
     public Order getOrder() {

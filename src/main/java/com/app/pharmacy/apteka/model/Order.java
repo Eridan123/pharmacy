@@ -25,9 +25,6 @@ public class Order {
 
     private String phone_number;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address address;
-
     @Column(columnDefinition = "varchar(20) default 'NORMAL'")
     @Enumerated(EnumType.STRING)
     private DeliveryMode delivery_mode = DeliveryMode.NORMAL;
@@ -36,8 +33,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus delivery_status = DeliveryStatus.WAITING;
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    private Payment payment;
+    private Double totalCost;
+
+    private String address;
 
 
     public Long getId() {
@@ -80,14 +78,6 @@ public class Order {
         this.phone_number = phone_number;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public DeliveryMode getDelivery_mode() {
         return delivery_mode;
     }
@@ -104,11 +94,19 @@ public class Order {
         this.delivery_status = delivery_status;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public Double getTotalCost() {
+        return totalCost;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setTotalCost(Double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

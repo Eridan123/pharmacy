@@ -1,5 +1,6 @@
 package com.app.pharmacy.apteka.controller;
 
+import com.app.pharmacy.apteka.model.Order;
 import com.app.pharmacy.apteka.model.Role;
 import com.app.pharmacy.apteka.model.UserRole;
 import com.app.pharmacy.apteka.repository.*;
@@ -11,13 +12,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    OrderRepository orderRepository;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -125,4 +131,28 @@ public class MainController {
         return "403Page";
     }
 
+    @RequestMapping("/user/list")
+    public String userList(ModelMap model){
+        model.addAttribute("users",userRepository.findAll());
+
+        return "userList";
+    }
+
+    @RequestMapping("/user/{id}/view")
+    public String userView(ModelMap model, @PathVariable("id") Long id){
+        com.app.pharmacy.apteka.model.User user=userRepository.getOne(id);
+        model.addAttribute("user",user);
+        List<UserRole> userRole=userRoleRepository.findAllByUser(user);
+        Role role=(userRole.get(0).getRole());
+        if(role.getName().equals("ROLE_ADMIN")){
+            model.addAttribute("role","ADMIN");
+        }
+        else {
+            model.addAttribute("role","USER");
+        }
+        List<Order> orders=orderRepository.findByUserId(id);
+        model.addAttribute("orders",orders);
+
+        return "userInfoPage";
+    }
 }
