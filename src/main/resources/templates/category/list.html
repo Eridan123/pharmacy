@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine Category List</title>
-</head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="fragment/header :: header-css"/>
 <body>
-
-<table style="width:100%">
-    <tr>
+<div th:replace="layout/header"/>
+<div class="row">
+    <div class="col-md-9">
+        <h1> Medicine Category List</h1>
+    </div>
+    <div class="col-md-3">
+        <a type="button" th:href="@{/category/0/save}" class="btn btn-default">Add category</a>
+    </div>
+</div>
+<table style="width:100%" class="table-bordered table-striped form-horizontal">
+    <tr >
         <th>Name</th>
         <th>Description</th>
-        <th sec:authorize="hasRole('ADMIN')">Edit</th>
-        <th sec:authorize="hasRole('ADMIN')">Delete</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="category:${categories}">
         <td th:text="${category.name}"></td>
         <td th:text="${category.description}"></td>
-        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/category/__${category.id}__/save}">Edit</a></td>
-        <td sec:authorize="hasRole('ADMIN')"><form th:action="@{/category/__${category.id}__/delete}" method="post">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
+        <td ><a th:href="@{/category/__${category.id}__/save}"><i class="fa fa-pencil"></i></a></td>
+        <td ><form th:action="@{/category/__${category.id}__/delete}" method="post">
+            <button type="submit"><i class="fa fa-remove"></i></button>
+        </form></td>
     </tr>
 </table>
 
+<br>
+<br>
+<br>
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -61,6 +62,8 @@ public class MedicineController {
             Medicine medicine=medicineRepository.getOne(id);
             model.addAttribute("medicine",medicine);
         }
+        model.addAttribute("categories",medicineCategoryRepository.findAll());
+        model.addAttribute("fors",medicineForRepository.findAll());
 
         return "medicine/form";
 
@@ -70,18 +73,21 @@ public class MedicineController {
     public String savePostView(ModelMap model,Medicine medicine){
 
         if(medicine.getId()==null){
-            medicine.setMedicineCategory(medicineCategoryRepository.getOne(Long.valueOf(1)));
             medicineRepository.save(medicine);
+            return "redirect:/medicine/"+medicine.getId()+"/view";
         }
         else {
-            Medicine medicine1=medicineRepository.getOne(medicine.getId());
-            medicine1.setName(medicine.getName());
-            medicine1.setDescription(medicine.getDescription());
-            medicineRepository.save(medicine1);
+            medicineRepository.save(medicine);
+            return "redirect:/medicine/list";
         }
+    }
 
-        return "redirect :/medicine/"+medicine.getId()+"/view";
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable("id") Long id){
+        Medicine medicine=medicineRepository.getOne(id);
+        medicineRepository.delete(medicine);
 
+        return "redirect:/medicine/list";
     }
 
 }

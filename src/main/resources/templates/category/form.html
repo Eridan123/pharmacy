@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine Category Add/Edit</title>
-</head>
+<div th:replace="fragment/header :: header-css"/>
 <body>
-<form th:action="@{/category/save}" th:object="${category}" method="post">
+<div th:replace="layout/header"/>
+<form th:action="@{/category/save}" th:object="${category}" method="post" class="form-horizontal">
     <input hidden="hidden" type="text" name="id" th:field="*{id}"><br>
-    Name:<br>
-    <input type="text" th:field="*{name}"><br>
-    Description:<br>
-    <input type="text" th:field="*{description}"><br>
-    <button type="submit" >SUBMIT</button>
+    <div class="contentText">
+        <fieldset>
+            <h1>Medicine Category add/edit</h1>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{name}" name="name"><br>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" name="description" th:field="*{description}"><br>
+                </div>
+            </div>
+        </fieldset>
+        <div class="buttons">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary reg_button" value="Submit" >
+                &nbsp;
+            </div>
+        </div>
+    </div>
 </form>
+<br>
+<br>
+<br>
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
 </body>
 </html>

@@ -29,6 +29,9 @@ public class MainController {
     RoleRepository roleRepository;
 
     @Autowired
+    UserRoleRepository userRoleRepository;
+
+    @Autowired
     MedicineRepository medicineRepository;
 
     @Autowired
@@ -89,24 +92,17 @@ public class MainController {
         return "registerUser";
     }
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
-    public String userRegi(com.app.pharmacy.apteka.model.User user) {
+    public String userRegister(com.app.pharmacy.apteka.model.User user) {
 
         user.setEncryted_password(bCryptPasswordEncoder.encode(user.getEncryted_password()));
-        if(user.getUsername()=="eridan"){
-            UserRole userRole=new UserRole();
-            Role role=roleRepository.findByName("ROLE_ADMIN");
-            userRole.setRole(role);
-            userRole.setUser(user);
-        }
-        else{
-            UserRole userRole=new UserRole();
-            Role role=roleRepository.findByName("ROLE_USER");
-            userRole.setRole(role);
-            userRole.setUser(user);
-        }
-        userRepository.save(user);
 
-        return "loginPage";
+        UserRole userRole=new UserRole();
+        Role role=roleRepository.findByName("ROLE_USER");
+        userRole.setRole(role);
+        userRepository.save(user);
+        userRole.setUser(user);
+        userRoleRepository.save(userRole);
+        return "login";
     }
 
 

@@ -1,20 +1,105 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>User Info</title>
-</head>
+<!--Template Name: Medistore
+File Name: register.html
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="fragment/header :: header-css"/>
+
 <body>
-<!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
+<!--begin header-->
+<div th:replace="layout/header"/>
+<!--end header-->
+<div class="container">
+    <div class="row" id="search_manu" style="margin-top: 10px">
+        <div class="col-md-6 col-xs-12">
+            <form  name="quick_find">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" placeholder="Enter search keywords here" class="form-control input-lg" id="inputGroup"/>
+                        <span class="input-group-addon">
+                                    <a href="#" style="color:white">Search</a>
+                                </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 col-xs-12">
 
+            <form  name="manufacturers">
+                <div class="form-group">
+                    <div class="">
+                        <select  style="font-size: 14px; background: #EAEAEA; border: none;" name="manufacturers_id"  size="1" class="input-lg form-control arrow-hide date_class">
+                            <option value="" selected="selected">Please Select manufacturers</option>
+                            <option>lorem</option>
+                            <option>lorem</option>
+                            <option>lorem</option>
+                            <option>lorem</option>
+                        </select>
 
-<h2>Register</h2>
-<form th:action="@{/user/register}" th:object="${user}" method="post">
-<input th:field="*{username}">
-<input th:field="*{encryted_password}">
-    <button type="submit">Submit</button>
-</form>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
+<div id="site_content">
+    <div class="container">
+            <div class="col-sm-9" id="content">            <div class="breadcrumbs">
+                <a th:href="@{/}"><i class="fa fa-home"></i></a>
+                <span>Register</span>
+            </div>
+                <h1>My Account Information</h1>
+                <p> <small><strong class="define_note"></strong></small>If you already have an account with us, please login at the
+                    <a th:href="@{/login}">Login page</a>.</p>
+                <form class="form-horizontal" method="post" th:action="@{/user/register}" th:object="${user}">
+                    <input type="text" name="id" th:field="*{id}">
+                    <div class="contentText">
+                        <fieldset id="account">
+                            <h1>Your Personal Details</h1>
+
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label">Username</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Username" name="username" th:field="*{username}">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <h1>Your Password</h1>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" placeholder="Password" name="encryted_password" th:field="${user.encryted_password}">
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="input-confirm" class="col-sm-2 control-label">Password Confirm</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="input-confirm" placeholder="Password Confirm" value="" name="confirm">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="buttons">
+                            <div class="pull-right">
+                                &nbsp;
+                                <input type="submit" class="btn btn-primary reg_button" value="Continue" >
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
 </body>
-
 </html>

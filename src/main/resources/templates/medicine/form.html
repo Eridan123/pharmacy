@@ -1,25 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine Add/Edit</title>
-</head>
+<div th:replace="fragment/header :: header-css"/>
 <body>
-<form th:action="@{/medicine/save}" th:object="${medicine}" method="post">
+<div th:replace="layout/header"/>
+<form th:action="@{/medicine/save}" th:object="${medicine}" method="post" class="form-horizontal">
     <input hidden="hidden" type="text" name="id" th:field="*{id}"><br>
-    Name:<br>
-    <input type="text" th:field="*{name}"><br>
-    Description:<br>
-    <input type="text" th:field="*{description}"><br>
-    Production date:<br>
-    <input type="date" th:field="*{prod_date}"><br>
-    Expire date:<br>
-    <input type="date" th:field="*{expire_date}"><br>
-    License:<br>
-    <input type="text" th:field="*{license}"><br>
-    Cost:<br>
-    <input type="text" th:field="*{cost}"><br>
-    <button type="submit" >SUBMIT</button>
+    <div class="contentText">
+        <fieldset>
+            <h1>Medicine add/edit</h1>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{name}" name="name"><br>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" name="description" th:field="*{description}"><br>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">License</label>
+                <div class="col-sm-10">
+                    <input type="text" name="license" th:field="*{license}"><br>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Cost</label>
+                <div class="col-sm-10">
+                    <input type="text" name="cost" th:field="*{cost}"><br>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <select class="selectpicker" th:field="*{medicineCategory.id}" >
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <select class="selectpicker" th:field="*{medicineFor.id}" >
+                        <option th:each="mFor : ${fors}" th:value="${mFor.id}" th:text="${mFor.name}"></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="buttons">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary reg_button" value="Submit" >
+                &nbsp;
+            </div>
+        </div>
+    </div>
 </form>
+<br>
+<br>
+<br>
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
 </body>
 </html>

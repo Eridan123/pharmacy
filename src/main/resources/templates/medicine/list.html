@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine List</title>
-</head>
+<div th:replace="fragment/header :: header-css"/>
 <body>
-
-<table style="width:100%">
-    <tr>
+<div th:replace="layout/header"/>
+<div class="row">
+    <div class="col-md-9">
+        <h1> Medicine List</h1>
+    </div>
+    <div class="col-md-3">
+        <a type="button" th:href="@{/medicine/0/save}" class="btn btn-default">Add medicine</a>
+    </div>
+</div>
+<table style="width:100%" class="table-bordered table-striped form-horizontal">
+    <tr >
         <th>Name</th>
         <th>Description</th>
-        <th>Amount</th>
+        <th>Cost</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="medicine:${medicines}">
         <td th:text="${medicine.name}"></td>
         <td th:text="${medicine.description}"></td>
         <td th:text="${medicine.cost}"></td>
+        <td ><a th:href="@{/medicine/__${medicine.id}__/save}"><i class="fa fa-pencil"></i></a></td>
+        <td ><form th:action="@{/medicine/__${medicine.id}__/delete}" method="post">
+            <button type="submit"><i class="fa fa-remove"></i></button>
+        </form></td>
     </tr>
 </table>
 
+<br>
+<br>
+<br>
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
 </body>
 </html>

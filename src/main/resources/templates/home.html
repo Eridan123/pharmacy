@@ -157,6 +157,12 @@ License URI: http://www.themevault.net/license/-->
                                                             </div>
                                                         </li>
                                                         <li class="li_product_buy_button">
+                                                            <div>
+                                                                <input type="number" id="amounts">
+                                                                <button class="btn btn-default" role="button" th:value="${medicine.id}" onclick="addToCart(this)">
+                                                                    Add to cart!
+                                                                </button>
+                                                            </div>
                                                             <a class="btn btn-default" id="but" href="cart.html" role="button" >
                                                                 Buy Now!
                                                             </a>
