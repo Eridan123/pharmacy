@@ -1,12 +1,141 @@
+<!--Template Name: Medistore
+File Name: single-product.html
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine View</title>
-</head>
+<div th:replace="fragment/header :: header-css"/>
 <body>
+<div th:replace="layout/header"/>
 
-<h1 th:text="${medicine.name}"></h1>
+<div id="site_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 left_sidebar1">
+                <div id="left_part">
+                    <div class="bs-example">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="infoBoxHeading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Categories</a>
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <i  id="accordan_plus" class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="infoBoxContents" th:each="category:${categories}">
+                                            <a th:href="@{/category/__${category.id}__/medicines}" th:text="${category.name}"></a><br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="infoBoxHeading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Medicine For</a>
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                            <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="infoBoxContents" id="sidebar" th:each="fo :${fors}">
+
+                                            <a th:href="@{/medicineFor/__${fo.id}__/medicines}" th:text="${fo.name}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                    function toggleChevron(e) {
+                        $(e.target)
+                            .prev('.panel-heading')
+                            .find("i.indicator")
+                            .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+                    }
+                    $('#accordion').on('hidden.bs.collapse', toggleChevron);
+                    $('#accordion').on('shown.bs.collapse', toggleChevron);
+                </script>
+
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12" id="content">
+                <div class="breadcrumbs">
+                    <a th:href="@{/}"><i class="fa fa-home"></i></a>
+                    <span >Medicine View</span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <h1 style="color: #39baf0" th:text="${medicine.name}"></h1>
+                        <ul class="list-unstyled product-section">
+                            <li>Medicine License:<span th:text="${medicine.license}"></span> </li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>
+                                <h2>Cost per one(KGS) <span th:text="${medicine.cost}">:</span></h2>
+                            </li>
+                        </ul>
+                        <div id="product">
+                            <div class="form-group">
+                                <label class="control-label">Amount</label>
+                                <input type="text" class="form-control" size="2" value="1" name="amount">
+                                <br>
+                                <a class="btn btn-primary btn-lg btn-block reg_button" th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> BUY NOW!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-description" aria-expanded="false">Description</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-description" class="tab-pane">
+                                <div class="row ">
+                                    <p th:text="${medicine.description}"></p>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="relateds"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--begin footer-->
+<div th:replace="layout/footer"/>
+<!--end footer-->
+<a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+</a>
+<script>
+    $("document").ready(function () {
+
+        $(".galleryimg").on("click", function () {
+            var src = $(this).attr('src');
+            console.log(src)
+            $(".changeimg").attr('src', src);
+        });
+    });
+</script>
 </body>
 </html>

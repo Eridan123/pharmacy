@@ -41,8 +41,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <div class="modal-body" id="cartContent">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -55,8 +55,8 @@
         <div class="col-md-4 col-md-offset-4 col-sm-offset-2  col-sm-6 col-xs-12" >
             <div id="top_right">
                 <div id="bottom_right">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-6 wd_auto">
+                    <div class="row" style="margin-top: 5%">
+                        <div class="col-md-6 col-xs-6">
                             <div class="left">
                                 <div class="login" th:if="${@userService.findUserByUsername(#authentication.name)}==null">
                                     <a class="btn btn-default reg_button" th:href="@{/login}">Login</a>
@@ -67,12 +67,14 @@
                                         <div class="text">
                                             <div class="img" >
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                <button type="button" id="cartButton" class="btn btn-primary">
                                                     <img class="img-responsive" src="images/cart.png" alt="" title="My cart" />My cart
                                                 </button>
                                         </div>
                                     </div>
-                                    <h1><i class="fa fa-child"></i><span class="name" th:text="${#authentication.name}"></span></h1>
+                                    <div>
+                                        <h1><i class="fa fa-user-circle-o"></i><a class="name" th:href="@{user/__${@userService.findUserByUsername(#authentication.name).getId()}__/view}" th:text="${#authentication.name}"></a></h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +119,9 @@
         </div>
     </div>
 </div>
-
+<form hidden="hidden" th:action="@{/order/cart}" id="cartForm" method="get">
+    <input name="data" id="cartInput">
+</form>
     <script th:inline="javascript">
 
         function addToCart(hh) {
@@ -136,8 +140,12 @@
                 sessionStorage.SessionName = "cart";
                 sessionStorage.setItem("cart", hh.value+'-'+amountt);
             }
+            $("#cartInput").val(sessionStorage.getItem("cart"));
 
         }
+        $("#cartButton").on("click",function () {
+            $("#cartForm").submit();
+        });
         /*
         var ttt;
         $(document).ready(function() {

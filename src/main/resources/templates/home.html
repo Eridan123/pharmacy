@@ -5,7 +5,7 @@ Author URI: http://www.themevault.net/
 License URI: http://www.themevault.net/license/-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <title>MediStore</title>
 <div th:replace="fragment/header :: header-css"/>
     <body>
@@ -53,6 +53,27 @@ License URI: http://www.themevault.net/license/-->
                         <div id="left_part">
                             <div class="bs-example">
                                 <div class="panel-group" id="accordion">
+                                    <div sec:authorize="hasRole('ADMIN')" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="infoBoxHeading">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Manage</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                    <i  id="accordan_plus" class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="infoBoxContents">
+                                                    <a th:href="@{/medicine/list}">Medicine List</a><br />
+                                                    <a th:href="@{/category/list}">Medicine Category List</a><br />
+                                                    <a th:href="@{/medicineFor/list}">Medicine For List</a><br />
+                                                    <a th:href="@{/user/list}"></a>User List<br />
+                                                    <a th:href="@{/order/list}"></a>Order List<br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <div class="infoBoxHeading">
@@ -70,7 +91,6 @@ License URI: http://www.themevault.net/license/-->
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <div class="infoBoxHeading">

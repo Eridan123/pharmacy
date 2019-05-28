@@ -47,6 +47,8 @@ public class MedicineController {
         Medicine medicine=medicineRepository.getOne(id);
 
         model.addAttribute("medicine",medicine);
+        model.addAttribute("categories",medicineCategoryRepository.findAll());
+        model.addAttribute("fors",medicineForRepository.findAll());
 
         return "medicine/view";
     }
