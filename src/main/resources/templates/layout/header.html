@@ -103,11 +103,11 @@
                             </div>
                             <div class="collapse navbar-collapse" id="myNavbar">
                                 <ul class="nav navbar-nav site_nav_menu1"  >
-                                    <li class="first "><a href="home.html">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Shipping & Payment</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li class="first "><a th:href="@{/}">Home</a></li>
+                                    <li><a href="aboutus.html">About us</a></li>
+                                    <li><a href="ship.html">Shipping & Payment</a></li>
+                                    <li><a href="terms.html">Terms & Conditions</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
 
                             </div>
@@ -125,7 +125,6 @@
     <script th:inline="javascript">
 
         function addToCart(hh) {
-            alert("dfg")
             console.log(hh.parentNode.childNodes)
             console.log(hh.parentNode.querySelector('#amounts').value);
             var amountt=hh.parentNode.querySelector('#amounts').value;

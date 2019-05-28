@@ -1,4 +1,4 @@
-<div id="footer1">
+<div id="footer1" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container-fluid footer-background">
         <div class="row">
             <div class="container">
@@ -10,11 +10,11 @@
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div id="footer_menu">
-                            <a href="home.html">Home</a> |
-                            <a href="#">About Us</a> |
-                            <a href="#">Shipping & Payment</a> |
-                            <a href="#">Terms & Conditions</a> |
-                            <a href="#">Contact Us</a> |
+                            <a th:href="@{/}">Home</a> |
+                            <a href="aboutus.html">About us</a>
+                            <a href="ship.html">Shipping & Payment</a>
+                            <a href="terms.html">Terms & Conditions</a>
+                            <a href="contact.html">Contact Us</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12">
